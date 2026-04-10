@@ -1,0 +1,11 @@
+api_version: 1.0
+name: y1
+cspace:
+  - joint1
+  - joint2
+  - joint3
+  - joint4
+  - joint5
+  - joint6
+default_q: [0.0, -0.8, 1.2, 0.0, -0.5, 0.0]
+cspace_to_urdf_rules: []
