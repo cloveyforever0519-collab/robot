@@ -1,0 +1,7 @@
+{
+  "steer": 0.15,
+  "throttle": 0.45,
+  "brake": 0.0,
+  "reverse": false,
+  "hand_brake": false
+}

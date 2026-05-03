@@ -1,0 +1,176 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: CARLA VCU
+VAL_TABLE_ Table_VCU_State 6 "线控驾驶" 5 "人工驾驶" 4 "故障/缓行" 3 "Ready" 2 "待机/预充" 1 "自检" 0 "空闲" ;
+VAL_TABLE_ Table_Gear 3 "无效" 2 "R档" 1 "D档" 0 "N档" ;
+VAL_TABLE_ EV_Ctr_Mode 1 "线控" 0 "人工" ;
+VAL_TABLE_ Table_Request_Flag 1 "线控模式" 0 "助力模式" ;
+VAL_TABLE_ Table_DBS_State 1 "有故障" 0 "Normal" ;
+VAL_TABLE_ Table_DBS_Park_Warn 1 "驻车时间超过1分钟" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B14 1 "其他故障" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B13 1 "踏板位置传感器故障" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B12 1 "压力传感器故障" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B11 1 "磁编故障" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B10 1 "1" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B9 1 "电流采样故障" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B8 1 "电流采样故障" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B7 1 "电机故障" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B6 1 "过载保护" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B5 1 "电源过压故障" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B4 1 "电源欠压故障" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B3 1 "过流保护" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B2 1 "过温保护" 0 " Normal" ;
+VAL_TABLE_ Table_DBS_B1 1 "过载保护" 0 " Normal" ;
+VAL_TABLE_ Table_ReqACK 1 "ACK" 0 "Not ACK" ;
+VAL_TABLE_ GearSts 3 "后退" 2 "未知" 1 "前进" 0 "空挡" ;
+VAL_TABLE_ OperateMode 1 "通讯控制" 0 "手动控制" ;
+VAL_TABLE_ SystemSts 3 "下电" 2 "故障" 1 "待机/工作" 0 "上电/自检" ;
+VAL_TABLE_ EBrakeStatus 1 "松闸" 0 "抱闸" ;
+VAL_TABLE_ EBrakeCmd 1 "强制松闸" 0 "MCU控制" ;
+VAL_TABLE_ DriveMode 1 "速度模式" 0 "扭矩模式" ;
+VAL_TABLE_ EnableStatus 1 "使能" 0 "不使能" ;
+VAL_TABLE_ GearStatus 2 "R档" 1 "D档" 0 "N档" ;
+
+
+BO_ 278 Cockpit_Control: 8 VCU
+ SG_ Cockpit_Beak : 16|8@1+ (1,0) [0|100] "%" Vector__XXX
+ SG_ Cockpit_Gear : 0|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Cockpit_EPS_Angle : 31|16@0- (1,0) [-600|600] "°" Vector__XXX
+ SG_ Cockpit_Key_Stop : 46|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Cockpit_Key_XbW : 41|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Cockpit_LED_Ready : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Cockpit_ACC : 8|8@1+ (1,0) [0|100] "%" Vector__XXX
+
+BO_ 226 Carla_EV_state: 8 CARLA
+ SG_ Carla_EPS_Torque : 40|8@1- (0.1,0) [-12|12] "N.M" Vector__XXX
+ SG_ Carla_Gear : 0|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Carla_Steer_Angle : 31|16@0- (1,0) [-540|540] "°" Vector__XXX
+ SG_ Carla_EV_Speed : 15|16@0- (0.001,0) [0|100] "m/s" Vector__XXX
+
+
+
+CM_ BU_ CARLA "域控制器";
+CM_ BU_ VCU "底盘行驶控制器";
+CM_ BO_ 278 "座舱操控";
+CM_ SG_ 278 Cockpit_Beak "刹车踏板开度";
+CM_ SG_ 278 Cockpit_Gear "挡位";
+CM_ SG_ 278 Cockpit_EPS_Angle "方向盘角度";
+CM_ SG_ 278 Cockpit_Key_Stop "急停开关";
+CM_ SG_ 278 Cockpit_Key_XbW "智驾开关";
+CM_ SG_ 278 Cockpit_LED_Ready "整车Ready灯";
+CM_ SG_ 278 Cockpit_ACC "油门踏板开度";
+CM_ BO_ 226 "仿真主车状态";
+CM_ SG_ 226 Carla_EPS_Torque "路感扭矩命令";
+CM_ SG_ 226 Carla_Gear "挡位";
+CM_ SG_ 226 Carla_Steer_Angle "方向盘转向角度请求";
+CM_ SG_ 226 Carla_EV_Speed "车辆车速";
+BA_DEF_ BO_  "TpJ1939VarDlc" ENUM  "No","Yes";
+BA_DEF_ SG_  "SigType" ENUM  "Default","Range","RangeSigned","ASCII","Discrete","Control","ReferencePGN","DTC","StringDelimiter","StringLength","StringLengthControl","MessageCounter","MessageChecksum";
+BA_DEF_ SG_  "GenSigEVName" STRING ;
+BA_DEF_ SG_  "GenSigILSupport" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType";
+BA_DEF_ BO_  "GenMsgFastOnStart" INT 0 100000;
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 0;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 3600000;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 1000000;
+BA_DEF_ SG_  "GenSigStartValue" INT 0 2147483647;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 1000;
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 100000;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "NmJ1939SystemInstance" INT 0 15;
+BA_DEF_ BU_  "NmJ1939System" INT 0 127;
+BA_DEF_ BU_  "NmJ1939ManufacturerCode" INT 0 2047;
+BA_DEF_ BU_  "NmJ1939IndustryGroup" INT 0 7;
+BA_DEF_ BU_  "NmJ1939IdentityNumber" INT 0 2097151;
+BA_DEF_ BU_  "NmJ1939FunctionInstance" INT 0 7;
+BA_DEF_ BU_  "NmJ1939Function" INT 0 255;
+BA_DEF_ BU_  "NmJ1939ECUInstance" INT 0 3;
+BA_DEF_ BU_  "NmJ1939AAC" INT 0 1;
+BA_DEF_ BU_  "NmStationAddress" INT 0 255;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclic","NotUsed","IfActive","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed","noMsgSendType";
+BA_DEF_ BO_  "GenMsgRequestable" INT 0 1;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 3600000;
+BA_DEF_ SG_  "SPN" INT 0 524287;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_  "ProtocolType" STRING ;
+BA_DEF_ BO_  "VFrameFormat" ENUM  "StandardCAN","ExtendedCAN","reserved","J1939PG";
+BA_DEF_DEF_  "TpJ1939VarDlc" "No";
+BA_DEF_DEF_  "SigType" "Default";
+BA_DEF_DEF_  "GenSigEVName" "Env@Nodename_@Signame";
+BA_DEF_DEF_  "GenSigILSupport" "Yes";
+BA_DEF_DEF_  "GenSigSendType" "NoSigSendType";
+BA_DEF_DEF_  "GenMsgFastOnStart" 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "ECU" "";
+BA_DEF_DEF_  "NmJ1939SystemInstance" 0;
+BA_DEF_DEF_  "NmJ1939System" 0;
+BA_DEF_DEF_  "NmJ1939ManufacturerCode" 0;
+BA_DEF_DEF_  "NmJ1939IndustryGroup" 0;
+BA_DEF_DEF_  "NmJ1939IdentityNumber" 0;
+BA_DEF_DEF_  "NmJ1939FunctionInstance" 0;
+BA_DEF_DEF_  "NmJ1939Function" 0;
+BA_DEF_DEF_  "NmJ1939ECUInstance" 0;
+BA_DEF_DEF_  "NmJ1939AAC" 0;
+BA_DEF_DEF_  "NmStationAddress" 254;
+BA_DEF_DEF_  "GenMsgSendType" "noMsgSendType";
+BA_DEF_DEF_  "GenMsgRequestable" 1;
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "SPN" 0;
+BA_DEF_DEF_  "DBName" "";
+BA_DEF_DEF_  "BusType" "CAN";
+BA_DEF_DEF_  "ProtocolType" "J1939";
+BA_DEF_DEF_  "VFrameFormat" "J1939PG";
+BA_ "DBName" "Carla-VCU";
+BA_ "NmStationAddress" BU_ CARLA 226;
+BA_ "NmStationAddress" BU_ VCU 193;
+BA_ "VFrameFormat" BO_ 278 0;
+BA_ "GenMsgCycleTime" BO_ 278 20;
+BA_ "GenMsgCycleTime" BO_ 226 20;
+BA_ "GenMsgSendType" BO_ 226 0;
+BA_ "VFrameFormat" BO_ 226 0;
+VAL_ 278 Cockpit_Gear 3 "无效" 2 "R档" 1 "D档" 0 "N档" ;
+VAL_ 226 Carla_Gear 3 "无效" 2 "R档" 1 "D档" 0 "N档" ;
+

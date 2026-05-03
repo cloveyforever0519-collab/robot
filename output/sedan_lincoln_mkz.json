@@ -1,0 +1,257 @@
+{
+  "global_metadata": {
+    "version": "5.0_L4_Final_Perfected",
+    "reference_frame": {
+      "standard": "ISO_8855",
+      "origin": "Center of rear axle on the ground plane",
+      "axes": {
+        "x": "Forward",
+        "y": "Left",
+        "z": "Up"
+      }
+    }
+  },
+  "vehicle_metadata": {
+    "category": "Sedan",
+    "blueprint_id": "vehicle.lincoln.mkz_2017",
+    "official_name": "2017 Lincoln MKZ (ADAS Research Platform)",
+    "chassis_type": "Unibody"
+  },
+  "weight_and_mass_properties": {
+    "comment": "1. 车辆重量：3.0T V6双涡轮增压+AWD系统，前重偏移，整备质量偏大",
+    "curb_weight_kg": 1965.0,
+    "gross_vehicle_weight_rating_kg": 2400.0,
+    "center_of_gravity_m": {
+      "x": 0.1,
+      "y": 0.0,
+      "z": 0.42
+    },
+    "sprung_mass_kg": 1710.0,
+    "unsprung_mass_per_wheel_kg": 63.75,
+    "total_unsprung_mass_kg": 255.0,
+    "moment_of_inertia": {
+      "Ixx": 620.0,
+      "Iyy": 2900.0,
+      "Izz": 3050.0
+    }
+  },
+  "aerodynamic_parameters": {
+    "comment": "2. 空气动力学：豪华轿车流线造型，风阻中等",
+    "drag_coefficient_cd": 0.27,
+    "frontal_area_sqm": 2.25,
+    "lift_coefficient_cl": 0.15,
+    "side_force_coefficient_cy": 0.45,
+    "pitch_moment_coefficient": 0.02,
+    "air_density_kg_m3": 1.225
+  },
+  "sensor_system_mount_points": {
+    "lidar_main": {
+      "sensor_ref": "lidar_64_main_roof.json",
+      "position": {
+        "x": 0.5,
+        "y": 0.0,
+        "z": 1.45
+      },
+      "rotation": {
+        "pitch": 0,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "camera_stereo_front": {
+      "sensor_ref": "camera_stereo_front.json",
+      "position": {
+        "x": 0.7,
+        "y": 0.0,
+        "z": 1.25
+      },
+      "rotation": {
+        "pitch": 0,
+        "yaw": 0,
+        "roll": 0
+      },
+      "stereo_baseline_m": 0.25,
+      "stereo_left_offset_m": {
+        "x": 0.0,
+        "y": -0.12,
+        "z": 0.0
+      },
+      "stereo_right_offset_m": {
+        "x": 0.0,
+        "y": 0.12,
+        "z": 0.0
+      }
+    },
+    "radar_mmw_front": {
+      "sensor_ref": "radar_mmw_front_long.json",
+      "position": {
+        "x": 2.4,
+        "y": 0.0,
+        "z": 0.55
+      },
+      "rotation": {
+        "pitch": -1,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "gnss_imu_main": {
+      "sensor_ref": "gnss_imu_combined.json",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.35
+      },
+      "rotation": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      }
+    },
+    "ultrasonic_array": {
+      "sensor_ref": "ultrasonic_array_surround.json",
+      "mount_points": [
+        {
+          "id": "fl",
+          "position": {
+            "x": 2.4,
+            "y": 0.8,
+            "z": 0.45
+          }
+        },
+        {
+          "id": "fr",
+          "position": {
+            "x": 2.4,
+            "y": -0.8,
+            "z": 0.45
+          }
+        },
+        {
+          "id": "rl",
+          "position": {
+            "x": -1.92,
+            "y": 0.8,
+            "z": 0.45
+          }
+        },
+        {
+          "id": "rr",
+          "position": {
+            "x": -1.92,
+            "y": -0.8,
+            "z": 0.45
+          }
+        }
+      ]
+    }
+  },
+  "powertrain_system": {
+    "powertrain_type": "ICE_V6_Turbo_AWD",
+    "max_rpm": 6500,
+    "torque_map_rpm_nm": [
+      [
+        1000,
+        350.0
+      ],
+      [
+        2000,
+        480.0
+      ],
+      [
+        3500,
+        542.0
+      ],
+      [
+        5500,
+        500.0
+      ],
+      [
+        6500,
+        380.0
+      ]
+    ],
+    "transmission": {
+      "gears": [
+        4.48,
+        2.92,
+        1.94,
+        1.46,
+        1.0,
+        0.74
+      ],
+      "final_drive": 3.16,
+      "efficiency": 0.86,
+      "shift_logic": {
+        "type": "Automatic_6_Speed",
+        "upshift_throttle_rpm": [
+          [
+            0.2,
+            1800
+          ],
+          [
+            0.5,
+            3200
+          ],
+          [
+            1.0,
+            6000
+          ]
+        ],
+        "downshift_throttle_rpm": [
+          [
+            0.0,
+            1000
+          ],
+          [
+            0.5,
+            2500
+          ],
+          [
+            1.0,
+            4000
+          ]
+        ]
+      }
+    }
+  },
+  "chassis_and_mechanical_systems": {
+    "tire_system": {
+      "tire_model": "Pacejka_Magic_Formula_5.2_Combined_Slip",
+      "dimensions": "235/45R18",
+      "nominal_pressure_psi": 35.0,
+      "pacejka_lateral_coefficients": {
+        "B_stiffness": 10.0,
+        "C_shape": 1.9,
+        "D_peak": 1.0,
+        "E_curvature": 0.97
+      },
+      "pacejka_longitudinal_coefficients": {
+        "B_stiffness": 12.0,
+        "C_shape": 1.6,
+        "D_peak": 1.05,
+        "E_curvature": 0.15
+      },
+      "relaxation_length_m": 0.15
+    },
+    "suspension_system": {
+      "front_spring_rate_n_m": 38000.0,
+      "rear_spring_rate_n_m": 42000.0,
+      "damping_ratio": 0.65,
+      "max_compression_m": 0.12,
+      "max_extension_m": 0.1
+    },
+    "steering_system": {
+      "steering_ratio": 14.8,
+      "max_steer_angle_deg": 480.0,
+      "wheel_max_angle_deg": 35.0,
+      "ackermann_geometry_percent": 85.0,
+      "rear_wheel_steering_enabled": false
+    },
+    "braking_system": {
+      "max_brake_torque_nm": 3500.0,
+      "brake_distribution_front": 0.6,
+      "abs_enabled": true
+    }
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "global_metadata": {
+    "version": "5.0_L4_Final_Perfected",
+    "reference_frame": {
+      "standard": "ISO_8855",
+      "origin": "Center of rear axle on the ground plane",
+      "axes": {
+        "x": "Forward",
+        "y": "Left",
+        "z": "Up"
+      }
+    }
+  },
+  "vehicle_metadata": {
+    "category": "Sedan",
+    "blueprint_id": "vehicle.dodge.charger_2020",
+    "official_name": "2020 Dodge Charger (High-Torque RWD Test Platform)",
+    "chassis_type": "Unibody_Front_Engine_RWD"
+  },
+  "weight_and_mass_properties": {
+    "comment": "1. 车辆重量：大V8发动机导致车头极重，典型的前重后轻配重",
+    "curb_weight_kg": 1920.0,
+    "gross_vehicle_weight_rating_kg": 2400.0,
+    "center_of_gravity_m": {
+      "x": 0.25,
+      "y": 0.0,
+      "z": 0.4
+    },
+    "sprung_mass_kg": 1660.0,
+    "unsprung_mass_per_wheel_kg": 65.0,
+    "total_unsprung_mass_kg": 260.0,
+    "moment_of_inertia": {
+      "Ixx": 650.0,
+      "Iyy": 3100.0,
+      "Izz": 3200.0
+    }
+  },
+  "aerodynamic_parameters": {
+    "comment": "2. 空气动力学：肌肉车造型导致风阻和迎风面积显著大于普通轿车",
+    "drag_coefficient_cd": 0.3,
+    "frontal_area_sqm": 2.35,
+    "lift_coefficient_cl": 0.12,
+    "side_force_coefficient_cy": 0.48,
+    "pitch_moment_coefficient": 0.03,
+    "air_density_kg_m3": 1.225
+  },
+  "sensor_system_mount_points": {
+    "lidar_main": {
+      "sensor_ref": "lidar_64_main_roof.json",
+      "position": {
+        "x": 0.5,
+        "y": 0.0,
+        "z": 1.45
+      },
+      "rotation": {
+        "pitch": 0,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "camera_stereo_front": {
+      "sensor_ref": "camera_stereo_front.json",
+      "position": {
+        "x": 0.7,
+        "y": 0.0,
+        "z": 1.25
+      },
+      "rotation": {
+        "pitch": 0,
+        "yaw": 0,
+        "roll": 0
+      },
+      "stereo_baseline_m": 0.25,
+      "stereo_left_offset_m": {
+        "x": 0.0,
+        "y": -0.12,
+        "z": 0.0
+      },
+      "stereo_right_offset_m": {
+        "x": 0.0,
+        "y": 0.12,
+        "z": 0.0
+      }
+    },
+    "radar_mmw_front": {
+      "sensor_ref": "radar_mmw_front_long.json",
+      "position": {
+        "x": 2.5,
+        "y": 0.0,
+        "z": 0.55
+      },
+      "rotation": {
+        "pitch": -1,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "gnss_imu_main": {
+      "sensor_ref": "gnss_imu_combined.json",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.35
+      },
+      "rotation": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      }
+    },
+    "ultrasonic_array": {
+      "sensor_ref": "ultrasonic_array_surround.json",
+      "mount_points": [
+        {
+          "id": "fl",
+          "position": {
+            "x": 2.5,
+            "y": 0.8,
+            "z": 0.45
+          }
+        },
+        {
+          "id": "fr",
+          "position": {
+            "x": 2.5,
+            "y": -0.8,
+            "z": 0.45
+          }
+        },
+        {
+          "id": "rl",
+          "position": {
+            "x": -2.0,
+            "y": 0.8,
+            "z": 0.45
+          }
+        },
+        {
+          "id": "rr",
+          "position": {
+            "x": -2.0,
+            "y": -0.8,
+            "z": 0.45
+          }
+        }
+      ]
+    }
+  },
+  "powertrain_system": {
+    "powertrain_type": "ICE_V8_RWD",
+    "max_rpm": 6500,
+    "torque_map_rpm_nm": [
+      [
+        1000,
+        500.0
+      ],
+      [
+        2500,
+        600.0
+      ],
+      [
+        4500,
+        700.0
+      ],
+      [
+        5500,
+        650.0
+      ],
+      [
+        6500,
+        450.0
+      ]
+    ],
+    "transmission": {
+      "gears": [
+        4.71,
+        3.14,
+        2.1,
+        1.66,
+        1.28,
+        1.0,
+        0.84,
+        0.67
+      ],
+      "final_drive": 3.09,
+      "efficiency": 0.85,
+      "shift_logic": {
+        "type": "Automatic_8_Speed",
+        "upshift_throttle_rpm": [
+          [
+            0.2,
+            2200
+          ],
+          [
+            0.5,
+            3800
+          ],
+          [
+            1.0,
+            6200
+          ]
+        ],
+        "downshift_throttle_rpm": [
+          [
+            0.0,
+            1200
+          ],
+          [
+            0.5,
+            2800
+          ],
+          [
+            1.0,
+            4500
+          ]
+        ]
+      }
+    }
+  },
+  "chassis_and_mechanical_systems": {
+    "tire_system": {
+      "tire_model": "Pacejka_Magic_Formula_5.2_Combined_Slip",
+      "dimensions": "275/40R20 (Performance Summer)",
+      "nominal_pressure_psi": 32.0,
+      "pacejka_lateral_coefficients": {
+        "B_stiffness": 12.5,
+        "C_shape": 1.9,
+        "D_peak": 1.15,
+        "E_curvature": 0.95
+      },
+      "pacejka_longitudinal_coefficients": {
+        "B_stiffness": 14.0,
+        "C_shape": 1.65,
+        "D_peak": 1.2,
+        "E_curvature": 0.1
+      },
+      "relaxation_length_m": 0.12
+    },
+    "suspension_system": {
+      "front_spring_rate_n_m": 42000.0,
+      "rear_spring_rate_n_m": 46000.0,
+      "damping_ratio": 0.6,
+      "max_compression_m": 0.13,
+      "max_extension_m": 0.11
+    },
+    "steering_system": {
+      "steering_ratio": 14.4,
+      "max_steer_angle_deg": 450.0,
+      "wheel_max_angle_deg": 36.0,
+      "ackermann_geometry_percent": 80.0,
+      "rear_wheel_steering_enabled": false
+    },
+    "braking_system": {
+      "max_brake_torque_nm": 4500.0,
+      "brake_distribution_front": 0.68,
+      "abs_enabled": true
+    }
+  }
+}
