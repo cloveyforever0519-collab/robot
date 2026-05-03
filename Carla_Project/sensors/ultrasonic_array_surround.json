@@ -1,0 +1,37 @@
+{
+  "sensor_metadata": {
+    "category": "Ultrasonic",
+    "sensor_id": "ultrasonic_array_surround",
+    "carla_blueprint": "sensor.other.obstacle",
+    "description": "全车环视超声波雷达组 - 12路数字编码脉冲 (泊车与极近距离防御)",
+    "is_active": true,
+    "power_consumption_w": 2.5
+  },
+
+  "hardware_specifications": {
+    "comment": "1. 声波物理特性：典型的‘短而宽’，主要覆盖车头车尾及侧方泊车空隙",
+    "range_m": 5.0,
+    "horizontal_fov_deg": 120.0,
+    "vertical_fov_deg": 30.0,
+    "sensor_tick_sec": 0.1,
+    "distance_resolution_m": 0.02,
+    "operating_frequency_khz": 40.0
+  },
+
+  "noise_and_physics_model": {
+    "comment": "2. 声波衰减与误报模型：模拟地面杂波反馈、温度对声速的影响及材质吸收",
+    "distance_noise_stddev_m": 0.03,
+    "echo_decay_rate_on_soft_material": 0.95,
+    "min_detectable_object_size_m": 0.1,
+    "ground_clutter_filter_enabled": true,
+    "temperature_compensation_c": 25.0
+  },
+
+  "data_transmission": {
+    "comment": "3. 协议与拓扑：通过 LIN 总线接入网关，具有典型的低速高延迟特征",
+    "protocol": "LIN_Bus",
+    "latency_ms": 50.0,
+    "data_type": "Distance_Value_Only",
+    "collision_warning_threshold_m": 0.3
+  }
+}

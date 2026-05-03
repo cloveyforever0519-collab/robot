@@ -1,0 +1,48 @@
+{
+  "sensor_metadata": {
+    "category": "Camera",
+    "sensor_id": "camera_stereo_front",
+    "carla_blueprint": "sensor.camera.rgb",
+    "description": "前向高清双目视觉摄像机 - 支持动态光影曝光与物理镜头畸变 (L4商业级标定)",
+    "is_active": true,
+    "power_consumption_w": 15.0
+  },
+
+  "hardware_specifications": {
+    "comment": "1. 图像基础：1080P 高清分辨率，100度广角，30Hz 帧率，以及至关重要的双目基线",
+    "image_size_x": 1920,
+    "image_size_y": 1080,
+    "fov_deg": 100.0,
+    "sensor_tick_sec": 0.0333,
+    "stereo_baseline_m": 0.25
+  },
+
+  "lens_and_distortion_model": {
+    "comment": "2. 镜头内参特性：引入桶形畸变与边缘暗角，逼迫算法做“去畸变”预处理",
+    "enable_postprocess_effects": true,
+    "lens_circle_falloff": 5.0,
+    "lens_circle_multiplier": 0.0,
+    "lens_k1": -0.08,
+    "lens_k2": 0.0,
+    "lens_kcube": 0.0
+  },
+
+  "exposure_and_environment": {
+    "comment": "3. 动态曝光与色彩：模拟进出隧道时的瞬间致盲，以及高速行驶的运动模糊",
+    "auto_exposure": true,
+    "exposure_min_ev": 7.0,
+    "exposure_max_ev": 14.0,
+    "exposure_speed_up": 3.0,
+    "exposure_speed_down": 1.0,
+    "gamma": 2.2,
+    "white_balance_temp_k": 6500.0,
+    "motion_blur_intensity": 0.45
+  },
+
+  "data_transmission": {
+    "comment": "4. 数据协议：视频流的编码延迟与高带宽占用",
+    "protocol": "TCP_H265_Video_Stream",
+    "latency_ms": 45.0,
+    "bandwidth_mbps": 20.0
+  }
+}

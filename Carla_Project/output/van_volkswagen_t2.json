@@ -1,0 +1,255 @@
+{
+  "global_metadata": {
+    "version": "5.0_L4_Final_Perfected",
+    "reference_frame": {
+      "standard": "ISO_8855",
+      "origin": "Center of rear axle on the ground plane",
+      "axes": {
+        "x": "Forward",
+        "y": "Left",
+        "z": "Up"
+      }
+    }
+  },
+  "vehicle_metadata": {
+    "category": "Van",
+    "blueprint_id": "vehicle.volkswagen.t2_2021",
+    "official_name": "Volkswagen T2 Microbus (Extreme Pitch/Roll Testbed)",
+    "chassis_type": "Body-on-Frame_Rear_Engine"
+  },
+  "weight_and_mass_properties": {
+    "comment": "1. 车辆重量：后置后驱风冷水平对置，车尾重，空载易甩尾，簧下质量偏大(整体桥)",
+    "curb_weight_kg": 1450.0,
+    "gross_vehicle_weight_rating_kg": 2300.0,
+    "center_of_gravity_m": {
+      "x": -0.45,
+      "y": 0.0,
+      "z": 0.55
+    },
+    "sprung_mass_kg": 1150.0,
+    "unsprung_mass_per_wheel_kg": 75.0,
+    "total_unsprung_mass_kg": 300.0,
+    "moment_of_inertia": {
+      "Ixx": 600.0,
+      "Iyy": 2300.0,
+      "Izz": 2450.0
+    }
+  },
+  "aerodynamic_parameters": {
+    "comment": "2. 空气动力学：正面像一堵平墙，风阻极大，高速稳定性差",
+    "drag_coefficient_cd": 0.48,
+    "frontal_area_sqm": 2.85,
+    "lift_coefficient_cl": 0.18,
+    "side_force_coefficient_cy": 0.85,
+    "pitch_moment_coefficient": 0.05,
+    "air_density_kg_m3": 1.225
+  },
+  "sensor_system_mount_points": {
+    "lidar_main": {
+      "sensor_ref": "lidar_64_main_roof.json",
+      "position": {
+        "x": 1.0,
+        "y": 0.0,
+        "z": 1.9
+      },
+      "rotation": {
+        "pitch": -3,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "camera_stereo_front": {
+      "sensor_ref": "camera_stereo_front.json",
+      "position": {
+        "x": 1.2,
+        "y": 0.0,
+        "z": 1.72
+      },
+      "rotation": {
+        "pitch": -3,
+        "yaw": 0,
+        "roll": 0
+      },
+      "stereo_baseline_m": 0.3,
+      "stereo_left_offset_m": {
+        "x": 0.0,
+        "y": -0.15,
+        "z": 0.0
+      },
+      "stereo_right_offset_m": {
+        "x": 0.0,
+        "y": 0.15,
+        "z": 0.0
+      }
+    },
+    "radar_mmw_front": {
+      "sensor_ref": "radar_mmw_front_long.json",
+      "position": {
+        "x": 1.6,
+        "y": 0.0,
+        "z": 0.5
+      },
+      "rotation": {
+        "pitch": -1,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "gnss_imu_main": {
+      "sensor_ref": "gnss_imu_combined.json",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.82
+      },
+      "rotation": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      }
+    },
+    "ultrasonic_array": {
+      "sensor_ref": "ultrasonic_array_surround.json",
+      "mount_points": [
+        {
+          "id": "fl",
+          "position": {
+            "x": 1.6,
+            "y": 0.75,
+            "z": 0.45
+          }
+        },
+        {
+          "id": "fr",
+          "position": {
+            "x": 1.6,
+            "y": -0.75,
+            "z": 0.45
+          }
+        },
+        {
+          "id": "rl",
+          "position": {
+            "x": -1.2,
+            "y": 0.75,
+            "z": 0.45
+          }
+        },
+        {
+          "id": "rr",
+          "position": {
+            "x": -1.2,
+            "y": -0.75,
+            "z": 0.45
+          }
+        }
+      ]
+    }
+  },
+  "powertrain_system": {
+    "powertrain_type": "ICE_H4_RR",
+    "max_rpm": 4500,
+    "torque_map_rpm_nm": [
+      [
+        1000,
+        110.0
+      ],
+      [
+        2000,
+        145.0
+      ],
+      [
+        2800,
+        165.0
+      ],
+      [
+        3600,
+        150.0
+      ],
+      [
+        4500,
+        120.0
+      ]
+    ],
+    "transmission": {
+      "gears": [
+        3.8,
+        2.06,
+        1.32,
+        1.0
+      ],
+      "final_drive": 4.57,
+      "efficiency": 0.82,
+      "shift_logic": {
+        "type": "Manual_4_Speed",
+        "upshift_throttle_rpm": [
+          [
+            0.2,
+            2000
+          ],
+          [
+            0.5,
+            3000
+          ],
+          [
+            1.0,
+            4000
+          ]
+        ],
+        "downshift_throttle_rpm": [
+          [
+            0.0,
+            1200
+          ],
+          [
+            0.5,
+            2000
+          ],
+          [
+            1.0,
+            3000
+          ]
+        ]
+      }
+    }
+  },
+  "chassis_and_mechanical_systems": {
+    "tire_system": {
+      "tire_model": "Pacejka_Magic_Formula_5.2_Combined_Slip",
+      "dimensions": "185/80R14 (High Sidewall Classic)",
+      "nominal_pressure_psi": 35.0,
+      "pacejka_lateral_coefficients": {
+        "B_stiffness": 8.0,
+        "C_shape": 1.6,
+        "D_peak": 0.85,
+        "E_curvature": 0.99
+      },
+      "pacejka_longitudinal_coefficients": {
+        "B_stiffness": 10.0,
+        "C_shape": 1.5,
+        "D_peak": 0.9,
+        "E_curvature": 0.05
+      },
+      "relaxation_length_m": 0.25
+    },
+    "suspension_system": {
+      "front_spring_rate_n_m": 25000.0,
+      "rear_spring_rate_n_m": 32000.0,
+      "damping_ratio": 0.4,
+      "max_compression_m": 0.2,
+      "max_extension_m": 0.18
+    },
+    "steering_system": {
+      "steering_ratio": 17.5,
+      "max_steer_angle_deg": 540.0,
+      "wheel_max_angle_deg": 38.0,
+      "ackermann_geometry_percent": 85.0,
+      "rear_wheel_steering_enabled": false
+    },
+    "braking_system": {
+      "max_brake_torque_nm": 2200.0,
+      "brake_distribution_front": 0.55,
+      "abs_enabled": true
+    }
+  }
+}

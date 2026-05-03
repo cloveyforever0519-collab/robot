@@ -1,0 +1,219 @@
+{
+  "global_metadata": {
+    "version": "5.0_L4_Final_Perfected",
+    "reference_frame": {
+      "standard": "ISO_8855",
+      "origin": "Center of rear axle on the ground plane",
+      "axes": {
+        "x": "Forward",
+        "y": "Left",
+        "z": "Up"
+      }
+    }
+  },
+  "vehicle_metadata": {
+    "category": "Sedan",
+    "blueprint_id": "vehicle.tesla.model3",
+    "official_name": "Tesla Model 3 Long Range AWD (EV Platform)",
+    "chassis_type": "Unibody_Skateboard_Battery"
+  },
+  "weight_and_mass_properties": {
+    "comment": "1. 车辆重量：纯电平台，电池包导致整备质量大且重心极低",
+    "curb_weight_kg": 1844.0,
+    "gross_vehicle_weight_rating_kg": 2280.0,
+    "center_of_gravity_m": {
+      "x": -0.05,
+      "y": 0.0,
+      "z": 0.28
+    },
+    "sprung_mass_kg": 1604.0,
+    "unsprung_mass_per_wheel_kg": 60.0,
+    "total_unsprung_mass_kg": 240.0,
+    "moment_of_inertia": {
+      "Ixx": 620.0,
+      "Iyy": 2950.0,
+      "Izz": 3150.0
+    }
+  },
+  "aerodynamic_parameters": {
+    "comment": "2. 空气动力学：业内顶级的超低风阻设计",
+    "drag_coefficient_cd": 0.23,
+    "frontal_area_sqm": 2.22,
+    "lift_coefficient_cl": 0.08,
+    "side_force_coefficient_cy": 0.5,
+    "pitch_moment_coefficient": 0.015,
+    "air_density_kg_m3": 1.225
+  },
+  "sensor_system_mount_points": {
+    "lidar_main": {
+      "sensor_ref": "lidar_64_main_roof.json",
+      "position": {
+        "x": 0.5,
+        "y": 0.0,
+        "z": 1.45
+      },
+      "rotation": {
+        "pitch": 0,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "camera_stereo_front": {
+      "sensor_ref": "camera_stereo_front.json",
+      "position": {
+        "x": 0.7,
+        "y": 0.0,
+        "z": 1.25
+      },
+      "rotation": {
+        "pitch": 0,
+        "yaw": 0,
+        "roll": 0
+      },
+      "stereo_baseline_m": 0.25,
+      "stereo_left_offset_m": {
+        "x": 0.0,
+        "y": -0.12,
+        "z": 0.0
+      },
+      "stereo_right_offset_m": {
+        "x": 0.0,
+        "y": 0.12,
+        "z": 0.0
+      }
+    },
+    "radar_mmw_front": {
+      "sensor_ref": "radar_mmw_front_long.json",
+      "position": {
+        "x": 2.4,
+        "y": 0.0,
+        "z": 0.55
+      },
+      "rotation": {
+        "pitch": -1,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "gnss_imu_main": {
+      "sensor_ref": "gnss_imu_combined.json",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.35
+      },
+      "rotation": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      }
+    },
+    "ultrasonic_array": {
+      "sensor_ref": "ultrasonic_array_surround.json",
+      "mount_points": [
+        {
+          "id": "fl",
+          "position": {
+            "x": 2.4,
+            "y": 0.8,
+            "z": 0.45
+          }
+        },
+        {
+          "id": "fr",
+          "position": {
+            "x": 2.4,
+            "y": -0.8,
+            "z": 0.45
+          }
+        },
+        {
+          "id": "rl",
+          "position": {
+            "x": -1.92,
+            "y": 0.8,
+            "z": 0.45
+          }
+        },
+        {
+          "id": "rr",
+          "position": {
+            "x": -1.92,
+            "y": -0.8,
+            "z": 0.45
+          }
+        }
+      ]
+    }
+  },
+  "powertrain_system": {
+    "powertrain_type": "BEV_Dual_Motor",
+    "max_rpm": 15000,
+    "torque_map_rpm_nm": [
+      [
+        0,
+        510.0
+      ],
+      [
+        5000,
+        510.0
+      ],
+      [
+        10000,
+        350.0
+      ],
+      [
+        15000,
+        150.0
+      ]
+    ],
+    "transmission": {
+      "gears": [
+        1.0
+      ],
+      "final_drive": 9.0,
+      "efficiency": 0.92,
+      "shift_logic": "Single_Speed_Reduction"
+    }
+  },
+  "chassis_and_mechanical_systems": {
+    "tire_system": {
+      "tire_model": "Pacejka_Magic_Formula_5.2_Combined_Slip",
+      "dimensions": "235/45R18 (Aero)",
+      "nominal_pressure_psi": 42.0,
+      "pacejka_lateral_coefficients": {
+        "B_stiffness": 12.5,
+        "C_shape": 1.9,
+        "D_peak": 1.15,
+        "E_curvature": 0.95
+      },
+      "pacejka_longitudinal_coefficients": {
+        "B_stiffness": 14.0,
+        "C_shape": 1.65,
+        "D_peak": 1.2,
+        "E_curvature": 0.1
+      },
+      "relaxation_length_m": 0.12
+    },
+    "suspension_system": {
+      "front_spring_rate_n_m": 45000.0,
+      "rear_spring_rate_n_m": 48000.0,
+      "damping_ratio": 0.7,
+      "max_compression_m": 0.1,
+      "max_extension_m": 0.08
+    },
+    "steering_system": {
+      "steering_ratio": 10.3,
+      "max_steer_angle_deg": 400.0,
+      "wheel_max_angle_deg": 38.0,
+      "ackermann_geometry_percent": 90.0,
+      "rear_wheel_steering_enabled": false
+    },
+    "braking_system": {
+      "max_brake_torque_nm": 4200.0,
+      "brake_distribution_front": 0.6,
+      "abs_enabled": true,
+      "regenerative_braking_max_nm": 1500.0
+    }
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "global_metadata": {
+    "version": "5.0_L4_Final_Perfected",
+    "reference_frame": {
+      "standard": "ISO_8855",
+      "origin": "Center of rear axle on the ground plane",
+      "axes": {
+        "x": "Forward",
+        "y": "Left",
+        "z": "Up"
+      }
+    }
+  },
+  "vehicle_metadata": {
+    "category": "Bus",
+    "blueprint_id": "vehicle.mitsubishi.fusorosa",
+    "official_name": "Mitsubishi Fuso Rosa (Mid-size Commercial Bus)",
+    "chassis_type": "Ladder_Frame_Rigid_Axle"
+  },
+  "weight_and_mass_properties": {
+    "comment": "1. 车辆重量：商用车大梁底盘，空载近4吨，满载可达6.2吨，转动惯量极其庞大",
+    "curb_weight_kg": 3950.0,
+    "gross_vehicle_weight_rating_kg": 6200.0,
+    "center_of_gravity_m": {
+      "x": 0.3,
+      "y": 0.0,
+      "z": 0.85
+    },
+    "sprung_mass_kg": 3350.0,
+    "unsprung_mass_per_wheel_kg": 150.0,
+    "total_unsprung_mass_kg": 600.0,
+    "moment_of_inertia": {
+      "Ixx": 2500.0,
+      "Iyy": 9000.0,
+      "Izz": 9500.0
+    }
+  },
+  "aerodynamic_parameters": {
+    "comment": "2. 空气动力学：标准的移动方盒子，极易受侧风影响",
+    "drag_coefficient_cd": 0.62,
+    "frontal_area_sqm": 5.25,
+    "lift_coefficient_cl": 0.2,
+    "side_force_coefficient_cy": 1.35,
+    "pitch_moment_coefficient": 0.08,
+    "air_density_kg_m3": 1.225
+  },
+  "sensor_system_mount_points": {
+    "lidar_main": {
+      "sensor_ref": "lidar_64_main_roof.json",
+      "position": {
+        "x": 3.2,
+        "y": 0.0,
+        "z": 2.7
+      },
+      "rotation": {
+        "pitch": -5,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "camera_stereo_front": {
+      "sensor_ref": "camera_stereo_front.json",
+      "position": {
+        "x": 3.4,
+        "y": 0.0,
+        "z": 2.5
+      },
+      "rotation": {
+        "pitch": -5,
+        "yaw": 0,
+        "roll": 0
+      },
+      "stereo_baseline_m": 0.4,
+      "stereo_left_offset_m": {
+        "x": 0.0,
+        "y": -0.2,
+        "z": 0.0
+      },
+      "stereo_right_offset_m": {
+        "x": 0.0,
+        "y": 0.2,
+        "z": 0.0
+      }
+    },
+    "radar_mmw_front": {
+      "sensor_ref": "radar_mmw_front_long.json",
+      "position": {
+        "x": 3.6,
+        "y": 0.0,
+        "z": 0.75
+      },
+      "rotation": {
+        "pitch": -1,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "gnss_imu_main": {
+      "sensor_ref": "gnss_imu_combined.json",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 2.6
+      },
+      "rotation": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      }
+    },
+    "ultrasonic_array": {
+      "sensor_ref": "ultrasonic_array_surround.json",
+      "mount_points": [
+        {
+          "id": "fl",
+          "position": {
+            "x": 3.6,
+            "y": 0.8,
+            "z": 0.65
+          }
+        },
+        {
+          "id": "fr",
+          "position": {
+            "x": 3.6,
+            "y": -0.8,
+            "z": 0.65
+          }
+        },
+        {
+          "id": "rl",
+          "position": {
+            "x": -2.88,
+            "y": 0.8,
+            "z": 0.65
+          }
+        },
+        {
+          "id": "rr",
+          "position": {
+            "x": -2.88,
+            "y": -0.8,
+            "z": 0.65
+          }
+        }
+      ]
+    }
+  },
+  "powertrain_system": {
+    "powertrain_type": "Diesel_I4_Turbo",
+    "max_rpm": 3200,
+    "torque_map_rpm_nm": [
+      [
+        800,
+        280.0
+      ],
+      [
+        1400,
+        400.0
+      ],
+      [
+        2000,
+        470.0
+      ],
+      [
+        2600,
+        420.0
+      ],
+      [
+        3200,
+        350.0
+      ]
+    ],
+    "transmission": {
+      "gears": [
+        5.4,
+        3.4,
+        2.1,
+        1.4,
+        1.0,
+        0.7
+      ],
+      "final_drive": 4.8,
+      "efficiency": 0.86,
+      "shift_logic": {
+        "type": "Manual_6_Speed",
+        "upshift_throttle_rpm": [
+          [
+            0.2,
+            1500
+          ],
+          [
+            0.5,
+            2200
+          ],
+          [
+            1.0,
+            2800
+          ]
+        ],
+        "downshift_throttle_rpm": [
+          [
+            0.0,
+            800
+          ],
+          [
+            0.5,
+            1400
+          ],
+          [
+            1.0,
+            2000
+          ]
+        ]
+      }
+    }
+  },
+  "chassis_and_mechanical_systems": {
+    "tire_system": {
+      "tire_model": "Pacejka_Magic_Formula_5.2_Combined_Slip",
+      "dimensions": "7.00R16 (Commercial Heavy Duty)",
+      "nominal_pressure_psi": 80.0,
+      "pacejka_lateral_coefficients": {
+        "B_stiffness": 15.0,
+        "C_shape": 1.4,
+        "D_peak": 0.9,
+        "E_curvature": 0.98
+      },
+      "pacejka_longitudinal_coefficients": {
+        "B_stiffness": 18.0,
+        "C_shape": 1.5,
+        "D_peak": 0.95,
+        "E_curvature": 0.2
+      },
+      "relaxation_length_m": 0.35
+    },
+    "suspension_system": {
+      "front_spring_rate_n_m": 95000.0,
+      "rear_spring_rate_n_m": 120000.0,
+      "damping_ratio": 0.55,
+      "max_compression_m": 0.12,
+      "max_extension_m": 0.15
+    },
+    "steering_system": {
+      "steering_ratio": 18.5,
+      "max_steer_angle_deg": 720.0,
+      "wheel_max_angle_deg": 45.0,
+      "ackermann_geometry_percent": 100.0,
+      "rear_wheel_steering_enabled": false
+    },
+    "braking_system": {
+      "max_brake_torque_nm": 8500.0,
+      "brake_distribution_front": 0.5,
+      "abs_enabled": true
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "sensor_metadata": {
+    "category": "Positioning",
+    "sensor_id": "gnss_imu_combined_l4",
+    "carla_blueprint": "sensor.other.gnss_and_imu",
+    "description": "高精度组合导航系统 - 支持实时差分定位 (RTK) 与 6轴惯性测量单元",
+    "is_active": true,
+    "power_consumption_w": 5.0
+  },
+
+  "gnss_specifications": {
+    "comment": "1. 全球导航卫星系统：模拟 RTK 级别的高精度定位",
+    "update_rate_hz": 10.0,
+    "position_noise_stddev": {
+      "latitude": 0.0000005,
+      "longitude": 0.0000005,
+      "altitude": 0.01
+    },
+    "altitude_bias_m": 0.0,
+    "satellite_count_min": 8
+  },
+
+  "imu_specifications": {
+    "comment": "2. 惯性测量单元：6轴传感器（加速度计+陀螺仪），用于姿态感知",
+    "update_rate_hz": 100.0,
+    "gyroscope_noise_stddev": 0.001,
+    "accelerometer_noise_stddev": 0.01,
+    "heading_drift_deg_hr": 0.05
+  },
+
+  "noise_and_drift_model": {
+    "comment": "3. 物理误差模型：模拟城市峡谷中的多路径效应与信号丢失",
+    "gnss_signal_loss_in_tunnel": true,
+    "imu_bias_instability": 0.0001,
+    "coordinate_system": "WGS84_to_Local_ENU"
+  },
+
+  "data_transmission": {
+    "comment": "4. 协议：高频输出姿态数据，低频输出经纬度数据",
+    "protocol": "NMEA_0183_and_Binary",
+    "latency_ms": 5.0,
+    "output_frames": ["Position", "Velocity", "Acceleration", "Orientation"]
+  }
+}

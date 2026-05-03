@@ -1,0 +1,259 @@
+{
+  "global_metadata": {
+    "version": "5.0_L4_Final_Perfected",
+    "reference_frame": {
+      "standard": "ISO_8855",
+      "origin": "Center of rear axle on the ground plane",
+      "axes": {
+        "x": "Forward",
+        "y": "Left",
+        "z": "Up"
+      }
+    }
+  },
+  "vehicle_metadata": {
+    "category": "Truck",
+    "blueprint_id": "vehicle.carlamotors.european_hgv",
+    "official_name": "European Heavy Goods Vehicle (Cab-Over Tractor Unit)",
+    "chassis_type": "Ladder_Frame_Cab_Over_Engine"
+  },
+  "weight_and_mass_properties": {
+    "comment": "1. 车辆重量：没有挂车时，重量全压在前轴（发动机在驾驶室正下方），典型的头重尾轻",
+    "curb_weight_kg": 8200.0,
+    "gross_vehicle_weight_rating_kg": 18000.0,
+    "center_of_gravity_m": {
+      "x": 1.8,
+      "y": 0.0,
+      "z": 1.15
+    },
+    "sprung_mass_kg": 6600.0,
+    "unsprung_mass_per_wheel_kg": 400.0,
+    "total_unsprung_mass_kg": 1600.0,
+    "moment_of_inertia": {
+      "Ixx": 8500.0,
+      "Iyy": 28000.0,
+      "Izz": 30000.0
+    }
+  },
+  "aerodynamic_parameters": {
+    "comment": "2. 空气动力学：平头设计导致正面撞风面积极大，但没有挂车所以侧面积较小",
+    "drag_coefficient_cd": 0.65,
+    "frontal_area_sqm": 9.5,
+    "lift_coefficient_cl": 0.15,
+    "side_force_coefficient_cy": 1.25,
+    "pitch_moment_coefficient": 0.1,
+    "air_density_kg_m3": 1.225
+  },
+  "sensor_system_mount_points": {
+    "lidar_main": {
+      "sensor_ref": "lidar_64_main_roof.json",
+      "position": {
+        "x": 3.5,
+        "y": 0.0,
+        "z": 3.8
+      },
+      "rotation": {
+        "pitch": -8,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "camera_stereo_front": {
+      "sensor_ref": "camera_stereo_front.json",
+      "position": {
+        "x": 3.7,
+        "y": 0.0,
+        "z": 3.6
+      },
+      "rotation": {
+        "pitch": -8,
+        "yaw": 0,
+        "roll": 0
+      },
+      "stereo_baseline_m": 0.45,
+      "stereo_left_offset_m": {
+        "x": 0.0,
+        "y": -0.23,
+        "z": 0.0
+      },
+      "stereo_right_offset_m": {
+        "x": 0.0,
+        "y": 0.23,
+        "z": 0.0
+      }
+    },
+    "radar_mmw_front": {
+      "sensor_ref": "radar_mmw_front_long.json",
+      "position": {
+        "x": 4.5,
+        "y": 0.0,
+        "z": 0.95
+      },
+      "rotation": {
+        "pitch": -1,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "gnss_imu_main": {
+      "sensor_ref": "gnss_imu_combined.json",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 3.7
+      },
+      "rotation": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      }
+    },
+    "ultrasonic_array": {
+      "sensor_ref": "ultrasonic_array_surround.json",
+      "mount_points": [
+        {
+          "id": "fl",
+          "position": {
+            "x": 4.5,
+            "y": 0.8,
+            "z": 0.85
+          }
+        },
+        {
+          "id": "fr",
+          "position": {
+            "x": 4.5,
+            "y": -0.8,
+            "z": 0.85
+          }
+        },
+        {
+          "id": "rl",
+          "position": {
+            "x": -3.6,
+            "y": 0.8,
+            "z": 0.85
+          }
+        },
+        {
+          "id": "rr",
+          "position": {
+            "x": -3.6,
+            "y": -0.8,
+            "z": 0.85
+          }
+        }
+      ]
+    }
+  },
+  "powertrain_system": {
+    "powertrain_type": "Diesel_Inline6_Heavy",
+    "max_rpm": 2500,
+    "torque_map_rpm_nm": [
+      [
+        600,
+        1500.0
+      ],
+      [
+        1100,
+        2800.0
+      ],
+      [
+        1500,
+        2800.0
+      ],
+      [
+        2500,
+        1200.0
+      ]
+    ],
+    "transmission": {
+      "gears": [
+        14.4,
+        12.3,
+        9.6,
+        7.4,
+        5.4,
+        4.0,
+        2.8,
+        1.9,
+        1.4,
+        1.0,
+        0.7
+      ],
+      "final_drive": 4.1,
+      "efficiency": 0.88,
+      "shift_logic": {
+        "type": "Automated_Manual_12_Speed",
+        "upshift_throttle_rpm": [
+          [
+            0.2,
+            1300
+          ],
+          [
+            0.8,
+            1900
+          ],
+          [
+            1.0,
+            2100
+          ]
+        ],
+        "downshift_throttle_rpm": [
+          [
+            0.0,
+            900
+          ],
+          [
+            0.5,
+            1200
+          ],
+          [
+            1.0,
+            1500
+          ]
+        ]
+      }
+    }
+  },
+  "chassis_and_mechanical_systems": {
+    "tire_system": {
+      "tire_model": "Pacejka_Magic_Formula_5.2_Combined_Slip",
+      "dimensions": "315/70R22.5 (Steer & Drive Axles)",
+      "nominal_pressure_psi": 120.0,
+      "pacejka_lateral_coefficients": {
+        "B_stiffness": 15.0,
+        "C_shape": 1.4,
+        "D_peak": 0.9,
+        "E_curvature": 0.98
+      },
+      "pacejka_longitudinal_coefficients": {
+        "B_stiffness": 18.0,
+        "C_shape": 1.5,
+        "D_peak": 0.95,
+        "E_curvature": 0.2
+      },
+      "relaxation_length_m": 0.35
+    },
+    "suspension_system": {
+      "front_spring_rate_n_m": 180000.0,
+      "rear_spring_rate_n_m": 450000.0,
+      "damping_ratio": 0.6,
+      "max_compression_m": 0.12,
+      "max_extension_m": 0.15
+    },
+    "steering_system": {
+      "steering_ratio": 20.0,
+      "max_steer_angle_deg": 850.0,
+      "wheel_max_angle_deg": 45.0,
+      "ackermann_geometry_percent": 100.0,
+      "rear_wheel_steering_enabled": false
+    },
+    "braking_system": {
+      "max_brake_torque_nm": 28000.0,
+      "brake_distribution_front": 0.7,
+      "abs_enabled": true,
+      "air_brake_delay_sec": 0.4
+    }
+  }
+}

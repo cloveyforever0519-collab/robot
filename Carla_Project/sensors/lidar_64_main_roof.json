@@ -1,0 +1,44 @@
+{
+  "sensor_metadata": {
+    "category": "LiDAR",
+    "sensor_id": "lidar_64_main_roof",
+    "carla_blueprint": "sensor.lidar.ray_cast",
+    "description": "车顶主激光雷达 - 64线机械旋转式 (L4商业级标定)",
+    "is_active": true,
+    "power_consumption_w": 25.0
+  },
+
+  "hardware_specifications": {
+    "comment": "1. 核心硬件参数：决定了点云的基础密度与刷新率",
+    "channels": 64,
+    "range_m": 200.0,
+    "rotation_frequency_hz": 10.0,
+    "points_per_second": 1300000,
+    "horizontal_fov_deg": 360.0
+  },
+
+  "vertical_fov_distribution": {
+    "comment": "2. 垂直视场角：极其关键的非对称设计 (向下探测盲区，向上看红绿灯)",
+    "upper_fov_deg": 15.0,
+    "lower_fov_deg": -25.0,
+    "beam_distribution": "non_uniform_focused_center",
+    "resolution_vertical_deg": 0.16
+  },
+
+  "noise_and_physics_model": {
+    "comment": "3. 物理噪点与环境模型：逼迫感知算法处理真实世界的缺陷",
+    "noise_stddev_m": 0.02,
+    "dropoff_general_rate": 0.10,
+    "dropoff_intensity_limit": 0.8,
+    "dropoff_zero_intensity": 0.4,
+    "atmosphere_attenuation_rate": 0.004,
+    "rain_fog_scatter_enabled": true
+  },
+
+  "data_transmission": {
+    "comment": "4. 协议与延迟：测试 VCU 的时间戳同步与补偿算法",
+    "protocol": "UDP_Point_Cloud_Packet",
+    "latency_ms": 25.0,
+    "packet_size_bytes": 1248
+  }
+}

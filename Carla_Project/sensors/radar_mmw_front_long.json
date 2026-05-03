@@ -1,0 +1,35 @@
+{
+  "sensor_metadata": {
+    "category": "Radar",
+    "sensor_id": "radar_mmw_front_long",
+    "carla_blueprint": "sensor.other.radar",
+    "description": "前向长距毫米波雷达 (77GHz) - 支持多普勒测速与RCS物理过滤 (L4商业级标定)",
+    "is_active": true,
+    "power_consumption_w": 12.0
+  },
+
+  "hardware_specifications": {
+    "comment": "1. 扫描特性：77GHz长距雷达，主攻远距离纵向目标，视场角极窄但穿透力极强",
+    "range_m": 250.0,
+    "horizontal_fov_deg": 20.0,
+    "vertical_fov_deg": 10.0,
+    "sensor_tick_sec": 0.05,
+    "points_per_second": 1500
+  },
+
+  "noise_and_physics_model": {
+    "comment": "2. 物理噪点：引入距离、速度与角度的真实高斯误差，以及RCS面积过滤",
+    "range_noise_stddev_m": 0.1,
+    "velocity_noise_stddev_m_s": 0.05,
+    "angle_noise_stddev_deg": 0.5,
+    "rcs_threshold_dbsm": -10.0,
+    "rain_fog_attenuation_db_km": 1.5
+  },
+
+  "data_transmission": {
+    "comment": "3. 协议与延迟：采用车载商用 CAN-FD 网络传输 Object List",
+    "protocol": "CAN_FD",
+    "latency_ms": 15.0,
+    "packet_format": "Object_List_With_Velocity"
+  }
+}

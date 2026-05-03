@@ -1,0 +1,260 @@
+{
+  "global_metadata": {
+    "version": "5.0_L4_Final_Perfected",
+    "reference_frame": {
+      "standard": "ISO_8855",
+      "origin": "Center of rear axle on the ground plane",
+      "axes": {
+        "x": "Forward",
+        "y": "Left",
+        "z": "Up"
+      }
+    }
+  },
+  "vehicle_metadata": {
+    "category": "Van",
+    "blueprint_id": "vehicle.mercedes.sprinter",
+    "official_name": "Mercedes-Benz Sprinter (Urban Logistics & Delivery Platform)",
+    "chassis_type": "Unibody_with_Integrated_Frame"
+  },
+  "weight_and_mass_properties": {
+    "comment": "1. 车辆重量：典型的商用轻客，发动机前置，空载和满载的重量分布差异极大",
+    "curb_weight_kg": 2450.0,
+    "gross_vehicle_weight_rating_kg": 3500.0,
+    "center_of_gravity_m": {
+      "x": 0.8,
+      "y": 0.0,
+      "z": 0.65
+    },
+    "sprung_mass_kg": 2100.0,
+    "unsprung_mass_per_wheel_kg": 87.5,
+    "total_unsprung_mass_kg": 350.0,
+    "moment_of_inertia": {
+      "Ixx": 1200.0,
+      "Iyy": 5000.0,
+      "Izz": 5200.0
+    }
+  },
+  "aerodynamic_parameters": {
+    "comment": "2. 空气动力学：迎风面积和侧风受风面积都非常大，对横风极度敏感",
+    "drag_coefficient_cd": 0.38,
+    "frontal_area_sqm": 3.5,
+    "lift_coefficient_cl": 0.12,
+    "side_force_coefficient_cy": 1.1,
+    "pitch_moment_coefficient": 0.06,
+    "air_density_kg_m3": 1.225
+  },
+  "sensor_system_mount_points": {
+    "lidar_main": {
+      "sensor_ref": "lidar_64_main_roof.json",
+      "position": {
+        "x": 1.5,
+        "y": 0.0,
+        "z": 2.2
+      },
+      "rotation": {
+        "pitch": -3,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "camera_stereo_front": {
+      "sensor_ref": "camera_stereo_front.json",
+      "position": {
+        "x": 1.7,
+        "y": 0.0,
+        "z": 2.0
+      },
+      "rotation": {
+        "pitch": -3,
+        "yaw": 0,
+        "roll": 0
+      },
+      "stereo_baseline_m": 0.3,
+      "stereo_left_offset_m": {
+        "x": 0.0,
+        "y": -0.15,
+        "z": 0.0
+      },
+      "stereo_right_offset_m": {
+        "x": 0.0,
+        "y": 0.15,
+        "z": 0.0
+      }
+    },
+    "radar_mmw_front": {
+      "sensor_ref": "radar_mmw_front_long.json",
+      "position": {
+        "x": 2.1,
+        "y": 0.0,
+        "z": 0.6
+      },
+      "rotation": {
+        "pitch": -1,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "gnss_imu_main": {
+      "sensor_ref": "gnss_imu_combined.json",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 2.1
+      },
+      "rotation": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      }
+    },
+    "ultrasonic_array": {
+      "sensor_ref": "ultrasonic_array_surround.json",
+      "mount_points": [
+        {
+          "id": "fl",
+          "position": {
+            "x": 2.1,
+            "y": 0.8,
+            "z": 0.5
+          }
+        },
+        {
+          "id": "fr",
+          "position": {
+            "x": 2.1,
+            "y": -0.8,
+            "z": 0.5
+          }
+        },
+        {
+          "id": "rl",
+          "position": {
+            "x": -1.68,
+            "y": 0.8,
+            "z": 0.5
+          }
+        },
+        {
+          "id": "rr",
+          "position": {
+            "x": -1.68,
+            "y": -0.8,
+            "z": 0.5
+          }
+        }
+      ]
+    }
+  },
+  "powertrain_system": {
+    "powertrain_type": "Diesel_I4_Turbo_FWD",
+    "max_rpm": 4500,
+    "torque_map_rpm_nm": [
+      [
+        800,
+        250.0
+      ],
+      [
+        1400,
+        380.0
+      ],
+      [
+        1750,
+        440.0
+      ],
+      [
+        2800,
+        400.0
+      ],
+      [
+        3800,
+        320.0
+      ]
+    ],
+    "transmission": {
+      "gears": [
+        5.35,
+        3.32,
+        2.22,
+        1.62,
+        1.21,
+        1.0,
+        0.87,
+        0.73,
+        0.64
+      ],
+      "final_drive": 3.73,
+      "efficiency": 0.88,
+      "shift_logic": {
+        "type": "Automatic_9_Speed",
+        "upshift_throttle_rpm": [
+          [
+            0.2,
+            1500
+          ],
+          [
+            0.5,
+            2200
+          ],
+          [
+            1.0,
+            3500
+          ]
+        ],
+        "downshift_throttle_rpm": [
+          [
+            0.0,
+            900
+          ],
+          [
+            0.5,
+            1500
+          ],
+          [
+            1.0,
+            2500
+          ]
+        ]
+      }
+    }
+  },
+  "chassis_and_mechanical_systems": {
+    "tire_system": {
+      "tire_model": "Pacejka_Magic_Formula_5.2_Combined_Slip",
+      "dimensions": "235/65R16 (Commercial Cargo)",
+      "nominal_pressure_psi": 55.0,
+      "pacejka_lateral_coefficients": {
+        "B_stiffness": 10.0,
+        "C_shape": 1.9,
+        "D_peak": 1.0,
+        "E_curvature": 0.97
+      },
+      "pacejka_longitudinal_coefficients": {
+        "B_stiffness": 12.0,
+        "C_shape": 1.6,
+        "D_peak": 1.05,
+        "E_curvature": 0.15
+      },
+      "relaxation_length_m": 0.15
+    },
+    "suspension_system": {
+      "front_spring_rate_n_m": 55000.0,
+      "rear_spring_rate_n_m": 85000.0,
+      "damping_ratio": 0.6,
+      "max_compression_m": 0.15,
+      "max_extension_m": 0.15
+    },
+    "steering_system": {
+      "steering_ratio": 16.0,
+      "max_steer_angle_deg": 600.0,
+      "wheel_max_angle_deg": 42.0,
+      "ackermann_geometry_percent": 90.0,
+      "rear_wheel_steering_enabled": false
+    },
+    "braking_system": {
+      "max_brake_torque_nm": 5500.0,
+      "brake_distribution_front": 0.65,
+      "abs_enabled": true
+    }
+  }
+}

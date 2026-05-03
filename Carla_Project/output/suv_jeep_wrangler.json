@@ -1,0 +1,259 @@
+{
+  "global_metadata": {
+    "version": "5.0_L4_Final_Perfected",
+    "reference_frame": {
+      "standard": "ISO_8855",
+      "origin": "Center of rear axle on the ground plane",
+      "axes": {
+        "x": "Forward",
+        "y": "Left",
+        "z": "Up"
+      }
+    }
+  },
+  "vehicle_metadata": {
+    "category": "SUV",
+    "blueprint_id": "vehicle.jeep.wrangler_rubicon",
+    "official_name": "Jeep Wrangler Rubicon (Off-road High-CoG Platform)",
+    "chassis_type": "Body-on-Frame_Solid_Axles"
+  },
+  "weight_and_mass_properties": {
+    "comment": "1. 车辆重量：非承载式大梁结构，由于前后整体桥，簧下质量在民用车中属地狱级",
+    "curb_weight_kg": 2050.0,
+    "gross_vehicle_weight_rating_kg": 2600.0,
+    "center_of_gravity_m": {
+      "x": 0.05,
+      "y": 0.0,
+      "z": 0.65
+    },
+    "sprung_mass_kg": 1570.0,
+    "unsprung_mass_per_wheel_kg": 120.0,
+    "total_unsprung_mass_kg": 480.0,
+    "moment_of_inertia": {
+      "Ixx": 950.0,
+      "Iyy": 3500.0,
+      "Izz": 3600.0
+    }
+  },
+  "aerodynamic_parameters": {
+    "comment": "2. 空气动力学：经典的行走砖头，极高的风阻和侧风敏感度",
+    "drag_coefficient_cd": 0.45,
+    "frontal_area_sqm": 2.85,
+    "lift_coefficient_cl": 0.15,
+    "side_force_coefficient_cy": 0.75,
+    "pitch_moment_coefficient": 0.04,
+    "air_density_kg_m3": 1.225
+  },
+  "sensor_system_mount_points": {
+    "lidar_main": {
+      "sensor_ref": "lidar_64_main_roof.json",
+      "position": {
+        "x": 0.4,
+        "y": 0.0,
+        "z": 1.9
+      },
+      "rotation": {
+        "pitch": -2,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "camera_stereo_front": {
+      "sensor_ref": "camera_stereo_front.json",
+      "position": {
+        "x": 0.6,
+        "y": 0.0,
+        "z": 1.7
+      },
+      "rotation": {
+        "pitch": -2,
+        "yaw": 0,
+        "roll": 0
+      },
+      "stereo_baseline_m": 0.3,
+      "stereo_left_offset_m": {
+        "x": 0.0,
+        "y": -0.15,
+        "z": 0.0
+      },
+      "stereo_right_offset_m": {
+        "x": 0.0,
+        "y": 0.15,
+        "z": 0.0
+      }
+    },
+    "radar_mmw_front": {
+      "sensor_ref": "radar_mmw_front_long.json",
+      "position": {
+        "x": 2.8,
+        "y": 0.0,
+        "z": 0.65
+      },
+      "rotation": {
+        "pitch": -1,
+        "yaw": 0,
+        "roll": 0
+      }
+    },
+    "gnss_imu_main": {
+      "sensor_ref": "gnss_imu_combined.json",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.8
+      },
+      "rotation": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      }
+    },
+    "ultrasonic_array": {
+      "sensor_ref": "ultrasonic_array_surround.json",
+      "mount_points": [
+        {
+          "id": "fl",
+          "position": {
+            "x": 2.8,
+            "y": 0.8,
+            "z": 0.55
+          }
+        },
+        {
+          "id": "fr",
+          "position": {
+            "x": 2.8,
+            "y": -0.8,
+            "z": 0.55
+          }
+        },
+        {
+          "id": "rl",
+          "position": {
+            "x": -2.24,
+            "y": 0.8,
+            "z": 0.55
+          }
+        },
+        {
+          "id": "rr",
+          "position": {
+            "x": -2.24,
+            "y": -0.8,
+            "z": 0.55
+          }
+        }
+      ]
+    }
+  },
+  "powertrain_system": {
+    "powertrain_type": "ICE_V6_4WD",
+    "max_rpm": 6400,
+    "torque_map_rpm_nm": [
+      [
+        1000,
+        280.0
+      ],
+      [
+        2000,
+        330.0
+      ],
+      [
+        4000,
+        352.0
+      ],
+      [
+        5500,
+        310.0
+      ],
+      [
+        6400,
+        240.0
+      ]
+    ],
+    "transmission": {
+      "gears": [
+        4.71,
+        3.14,
+        2.1,
+        1.67,
+        1.29,
+        1.0,
+        0.84,
+        0.67
+      ],
+      "final_drive": 4.1,
+      "efficiency": 0.85,
+      "shift_logic": {
+        "type": "Automatic_8_Speed",
+        "upshift_throttle_rpm": [
+          [
+            0.2,
+            2000
+          ],
+          [
+            0.5,
+            3500
+          ],
+          [
+            1.0,
+            5500
+          ]
+        ],
+        "downshift_throttle_rpm": [
+          [
+            0.0,
+            1200
+          ],
+          [
+            0.5,
+            2500
+          ],
+          [
+            1.0,
+            4000
+          ]
+        ]
+      }
+    }
+  },
+  "chassis_and_mechanical_systems": {
+    "tire_system": {
+      "tire_model": "Pacejka_Magic_Formula_5.2_Combined_Slip",
+      "dimensions": "285/70R17 (33-inch Mud-Terrain)",
+      "nominal_pressure_psi": 30.0,
+      "pacejka_lateral_coefficients": {
+        "B_stiffness": 8.0,
+        "C_shape": 1.6,
+        "D_peak": 0.85,
+        "E_curvature": 0.99
+      },
+      "pacejka_longitudinal_coefficients": {
+        "B_stiffness": 10.0,
+        "C_shape": 1.5,
+        "D_peak": 0.9,
+        "E_curvature": 0.05
+      },
+      "relaxation_length_m": 0.25
+    },
+    "suspension_system": {
+      "front_spring_rate_n_m": 35000.0,
+      "rear_spring_rate_n_m": 40000.0,
+      "damping_ratio": 0.45,
+      "max_compression_m": 0.25,
+      "max_extension_m": 0.25
+    },
+    "steering_system": {
+      "steering_ratio": 16.1,
+      "max_steer_angle_deg": 540.0,
+      "wheel_max_angle_deg": 35.0,
+      "ackermann_geometry_percent": 75.0,
+      "rear_wheel_steering_enabled": false
+    },
+    "braking_system": {
+      "max_brake_torque_nm": 4000.0,
+      "brake_distribution_front": 0.6,
+      "abs_enabled": true
+    }
+  }
+}
